@@ -1,0 +1,25 @@
+<svg width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_16_28)">
+<rect x="77" y="61.0312" width="113" height="113.969" rx="12" fill="white"/>
+</g>
+<rect x="91.8955" y="79.1625" width="22.6" height="6.21648" rx="3.10824" fill="#B7BFE3" fill-opacity="0.350106"/>
+<rect x="121.686" y="79.1625" width="52.9046" height="6.21648" rx="3.10824" fill="#B7BFE3" fill-opacity="0.350106"/>
+<rect x="91.8955" y="94.7038" width="82.6955" height="6.21648" rx="3.10824" fill="#B7BFE3" fill-opacity="0.350106"/>
+<rect x="91.8955" y="109.727" width="82.6955" height="6.21648" rx="3.10824" fill="#B7BFE3" fill-opacity="0.350106"/>
+<rect x="91.8955" y="123.714" width="82.6955" height="6.21648" rx="3.10824" fill="#B7BFE3" fill-opacity="0.350106"/>
+<rect x="91.8955" y="137.183" width="82.6955" height="6.21648" rx="3.10824" fill="#B7BFE3" fill-opacity="0.350106"/>
+<rect x="91.8955" y="150.134" width="82.6955" height="6.21648" rx="3.10824" fill="#B7BFE3" fill-opacity="0.350106"/>
+<path d="M149.131 114.845L150.346 113.63L146.7 109.985L140.021 103.307L136.374 99.6616L135.159 100.877L132.728 103.307L111.302 124.727C110.183 125.845 109.366 127.232 108.914 128.749L105.107 141.695C104.838 142.599 105.085 143.577 105.763 144.244C106.44 144.91 107.408 145.158 108.312 144.9L121.251 141.093C122.768 140.641 124.156 139.824 125.274 138.706L146.7 117.286L149.131 114.845ZM122.209 132.953L121.23 135.394C120.8 135.727 120.316 135.975 119.799 136.136L111.388 138.609L113.862 130.211C114.013 129.684 114.271 129.2 114.604 128.781L117.046 127.802V131.243C117.046 132.19 117.82 132.964 118.767 132.964H122.209V132.953ZM144.011 92.0162L142.462 93.5754L140.031 96.0056L138.805 97.2207L142.452 100.866L149.131 107.544L152.777 111.189L153.993 109.974L156.424 107.544L157.983 105.984C160.672 103.296 160.672 98.9412 157.983 96.2529L153.756 92.0162C151.067 89.3279 146.711 89.3279 144.022 92.0162H144.011ZM138.913 110.081L123.424 125.566C122.757 126.232 121.66 126.232 120.993 125.566C120.326 124.899 120.326 123.802 120.993 123.136L136.482 107.651C137.149 106.984 138.246 106.984 138.913 107.651C139.58 108.318 139.58 109.415 138.913 110.081Z" fill="#4F63BC"/>
+<defs>
+<filter id="filter0_d_16_28" x="69" y="55.0312" width="129" height="129.969" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_16_28"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_16_28" result="shape"/>
+</filter>
+</defs>
+</svg>

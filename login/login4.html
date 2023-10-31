@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BARC Ticketing System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="assets/tp.ico">  
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="vendors/bootstrap-4.6.0/css/bootstrap.min.css">
+  <!--Fontawesome-->
+  <link rel="stylesheet" href="vendors/fontawesome-5.13.0/css/all.css">
+  <!--Custom CSS-->
+  <link rel="stylesheet" href="vendors/css/custom.css">
+</head>
+<style>
+    body {
+        position: relative; 
+        background-image: url('assets/bg2.svg'); 
+        background-repeat: no-repeat; 
+        background-size: cover;  
+        background-attachment: fixed; 
+        overflow-x: hidden; /* Hide scrollbars */
+    }
+
+    .card-login {
+        border:0;
+        border-radius: 20px;       
+        /* box-shadow: rgb(30 30 30 / 10%) 0px 54px 55px, rgb(30 30 30 / 15%) 0px -12px 30px, rgb(30 30 30 / 12%) 0px 4px 6px, rgb(30 30 30 / 17%) 0px 12px 13px, rgb(30 30 30 / 9%) 0px -3px 5px; */
+        box-shadow: 0 30px 35px 15px rgb(48 71 176 / 10%); 
+        overflow: hidden;
+        width: 35%;
+        height: 70vh;
+        left: 30%;
+    }
+    
+    hr.hr-blue {
+        margin-left: 0;
+        height: 3px;
+        width: 25%;
+        opacity: .9;
+        background: linear-gradient(to right, #3047B0, #0087FF);
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        border: 2px solid #e8e8e8;
+        border-radius: 50px;
+        margin: 8px 0;
+        outline: none;
+        padding: 13px;
+        box-sizing: border-box;
+        transition: 0.3s;
+        font-size:14px;
+        height: 50px;
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus {
+        border-color: #0087FF;
+        box-shadow: 0 0 8px 0 #0087FF;
+    }
+
+    .inputWithIcon input[type="text"] {
+        padding-left: 47px;
+    }
+
+    .inputWithIcon input[type="password"] {
+        padding-left: 47px;
+    }
+
+    .inputWithIcon {
+        position: relative;
+    }
+
+    .inputWithIcon i {
+        position: absolute;
+        left: 0;
+        top: 16px;
+        padding: 11px 20px;
+        color: #aaa;
+        transition: 0.3s;
+    }
+
+    .inputWithIcon input[type="text"]:focus + i {
+        color: #0087FF;
+    }
+
+    .inputWithIcon input[type="password"]:focus + i {
+        color: #0087FF;
+    }
+
+    .inputWithIcon.inputIconBg i {
+        background-color: #aaa;
+        color: #fff;
+        padding: 9px 4px;
+        border-radius: 4px 0 0 4px;
+    }
+
+    .inputWithIcon.inputIconBg input[type="text"]:focus + i {
+        color: #fff;
+        background-color: #0087FF;
+    }
+
+    .inputWithIcon.inputIconBg input[type="password"]:focus + i {
+        color: #fff;
+        background-color: #0087FF;
+    }
+
+    button {
+        padding: 10px 12px;
+        height: 50px;
+        margin: 5px 0;
+        font-family: 'Montserrat', sans-serif;
+        background-image: linear-gradient(to right, #3047B0, #0087FF, #3047B0, #0087FF);
+        color: #ffff!important;
+        cursor: pointer;
+        border-radius: 50px!important;
+        background-size: 300% 100%;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;        
+        font-weight: 700;
+    }
+
+    button:hover {
+        background-position: 100% 0;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+
+</style>
+<body> 
+    <div class="container-fluid">      
+          <div class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+              <div class="container">
+                  <div class="card card-login">    
+                      <div class="row">
+                          <div class="col-sm-12 text-center">
+                              <img src="assets/vector.svg" class="img-fluid mt-4">
+                          </div>
+                      </div>
+
+                      <div class="row mt-5">
+                          <div class="col-sm-12 text-center">
+                            <div class="form px-5">
+                                <h1 class="text-blue font-weight-bold">BARC</h1>
+                                <h5>Ticketing System</h5>
+
+                                <hr class="hr-blue mx-auto">
+
+                                <div class="form-group inputWithIcon mt-4 mb-1">
+                                    <input type="text" placeholder="Teleperformance ID">                                  
+                                    <i class="fas fa-id-card-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                </div>                           
+                                <div class="form-group">                   
+                                    <button type="submit" class="btn btn-block">Login</button>
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+
+</body>
+<script src="vendors/bootstrap-core/jquery-3.5.1.js"></script>
+<script src="vendors/bootstrap-core/popper.min.js"></script>
+<script src="vendors/bootstrap-4.6.0/js/bootstrap.min.js"></script>

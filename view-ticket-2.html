@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ticket View</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="icon" type="image/png" href="assets/tp.ico">  
+  <!--bootstrap-->
+  <link rel="stylesheet" href="vendors/bootstrap-4.6.0/css/bootstrap.min.css">
+  <!--fontawesome-->
+  <link rel="stylesheet" href="vendors/fontawesome-5.13.0/css/all.css">
+  <!--datatable-->
+  <link rel="stylesheet"  href="vendors/datatable/css/dataTables.bootstrap4.min.css">
+  <!--custom CSS-->
+  <link rel="stylesheet" href="vendors/css/custom.css">
+  <!-- select2 css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+</head>
+<style>
+  .tracking-id {
+    color: #303030;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .subject {
+    color: #3047B0;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .ticket-details-label {
+    color: #303030;
+    font-size: 13px;
+  }
+
+  .btn-primary-outline {
+    background-color: #fff;
+    color: #3047B0;
+    border: 2px solid #3047B0;
+    border-radius: 7px;
+  }
+
+  .btn-primary-outline:hover {
+    background-color: #3047B0;
+    color: #fff;
+    border: 2px solid #3047B0;
+  }
+  
+  .description {
+    font-size: 13px;
+    color: #303030;
+    border: 1px solid rgba(0,0,0,.1);
+  }
+
+  .alert-primary {
+    background-color: #ebeefa;
+    border:1px solid #3047B0;
+    color: #3047B0;
+  }
+
+  .assign-text-btn {
+    font-size: 13px;
+    color: #3047B0;
+    cursor: pointer;
+    font-weight: 600;    
+  }
+
+  .nav-pills .nav-link {
+    color: #7386d9;
+    background-color: #fff;
+    border: 2px solid #7386d9;
+    font-weight: 600;
+    font-size: 13px;
+    margin-right: 5px;
+    border-radius: 7px;
+  }
+
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link  {
+    color: #fff;
+    font-weight: 600;
+    background-color: #3047B0;
+    border: 2px solid #3047B0;
+  }
+
+  .disabled {
+      color: #303030!important;
+      background-color: #fff;
+      border: 0!important;;  
+    }
+  
+  .tab-content{
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .alert-activity {
+    background-color: #f2f2f3;
+    border:1px solid #d6d8db;
+    color: #383d41;
+  }
+
+  .alert-comment {
+    background-color: #ebf7f9;
+    border:1px solid #bee5eb;
+    color: #0c5460;
+  }
+
+  .select2-container{
+    width: 100%!important;
+  } 
+
+  .card-details {
+    height: 95%;
+  }
+
+</style>
+<body class="bg-gray-100"> 
+    <div class="wrapper">
+        <!-- side bar -->
+        <div class="sidebar">
+          <div class="logo_details">
+            <i class="icon"></i>
+            <div class="logo_name text-center">BARC</div>
+            <i class="fas fa-bars" id="btn"></i>
+          </div>
+          <div class="logo_header text-center">Ticketing System</div>     
+          <hr>
+
+          <ul class="nav-list">           
+            <li class="">
+              <a href="dashboard.html">
+                <i class="fas fa-th-large"></i>
+                <span class="link_name">Dashboard</span>
+              </a>
+              <span class="tooltip">Dashboard</span>
+            </li>
+
+            <li>
+              <a href="submit-ticket.html">
+                <i class="fas fa-paper-plane"></i>
+                <span class="link_name">Submit a Ticket</span>
+              </a>
+              <span class="tooltip">Submit a Ticket</span>
+            </li>
+
+            <li>
+              <a href="my-tickets.html" class="active">
+                <i class="fas fa-ticket-alt"></i>
+                <span class="link_name">My Tickets</span>
+              </a>
+              <span class="tooltip">My Tickets</span>
+            </li>
+
+            <li>
+              <a href="#pageSubmenu"  class="main-menu dropdown-toggle" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-ticket-alt"></i>
+                <span class="link_name">All Tickets</span>
+                
+              </a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="open-tickets.html">
+                      <i class="fas fa-ticket-alt"></i>
+                      <span class="link_name">Open Tickets</span>
+                    </a>
+                </li>
+                <li>
+                  <a href="pending-tickets.html">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span class="link_name">Pending Tickets</span>
+                  </a>
+                </li>                
+              </ul>
+              <span class="tooltip">All Tickets</span>
+            </li>
+            
+          </ul>
+        </div>
+
+        <!--content-->
+        <section class="home-section">
+          <!-- top nav -->  
+          <nav class="navbar navbar-expand-lg bg-white sticky-top shadow p-2" id="navbar">
+              <div class="container-fluid">
+          
+                  <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                            <li class="breadcrumb-item text-sm">Pages</li>
+                            <li class="breadcrumb-item text-sm" aria-current="page">My Tickets</li>
+                        </ol>
+                        <h4 class="font-weight-bolder mb-0">Ticket View</h4>
+                  </nav>
+    
+                  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navbar-right-top">                                
+                            <li class="nav-item dropdown notification">
+                                <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-fw fa-bell"></i> 
+                                    <span class="indicator"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                    <li>
+                                        <div class="notification-title"> Notification</div>
+                                        <div class="notification-list">
+                                            <div class="list-group">
+                                                <a href="#" class="list-group-item list-group-item-action">
+                                                    <div class="notification-info">
+                                                        <div class="notification-list-user-img">
+                                                            <i class="fas fa-user-circle fa-3x user-avatar-md rounded-circle mt-2"></i>
+                                                            <!-- <img src="https://img.icons8.com/office/100/000000/administrator-female.png" alt="" class="user-avatar-md rounded-circle"> -->
+                                                        </div>
+                                                        <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Hukonah</span>replied to ticket ABC-001-123.
+                                                            <div class="notification-date">2 min ago</div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="list-group-item list-group-item-action">
+                                                    <div class="notification-info">
+                                                        <div class="notification-list-user-img">
+                                                            <i class="fas fa-user-circle fa-3x user-avatar-md rounded-circle mt-2"></i>
+                                                        </div>
+                                                        <div class="notification-list-user-block"><span class="notification-list-user-name">John Sammy</span>assigned ticket EFG-123-002 to you.
+                                                            <div class="notification-date">2 days ago</div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                    </li>
+                                </ul>
+                            </li>
+                                                           
+                            <li class="nav-item dropdown nav-user">
+                                <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                    <!-- <img src="https://img.icons8.com/dusk/100/000000/user-female-circle.png" alt="" class="user-avatar-md rounded-circle"></a> -->
+                                    <i class="fas fa-user-circle user-avatar-md rounded-circle fa-lg"></i>
+                                <div class="dropdown-menu dropdown-menu-right nav-user-dropdown user-drpdwn" aria-labelledby="navbarDropdownMenuLink2">
+                                    <div class="nav-user-info">
+                                        <h5 class="mb-0 text-white nav-user-name">John Doe</h5>                                            
+                                    </div>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                  </div>
+              </div>
+          </nav>
+       
+          <div class="px-5">
+            <!--card-->         
+            <div class="row mt-2 mb-2">
+              <div class="col-lg-12">
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="card shadow border mt-4">
+                      <div class="card-body p-4">
+
+                        <div class="row p-2">
+                          <div class="col-sm-12">
+                            <p class="tracking-id mb-0">ABC-123-000</p>
+                            <p class="subject">Duplicate Data</p>
+                            <hr>
+                          </div>
+                        </div>
+                        
+                        <div class="row px-2">
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <p class="ticket-details-label font-weight-bold">Ticket Type:</p>
+                              </div>
+                              <div class="col-sm-8">
+                                <p class="ticket-details-label">Backend Support</p>
+                              </div>                              
+                            </div>
+
+                            <div class="row mt-2">
+                              <div class="col-sm-4">
+                                <p class="ticket-details-label font-weight-bold">Requestor:</p>
+                              </div>
+                              <div class="col-sm-8">
+                                <p class="ticket-details-label">John Doe</p>
+                              </div>                              
+                            </div>
+
+                            <div class="row mt-2">
+                              <div class="col-sm-4">
+                                <p class="ticket-details-label font-weight-bold">Request Date:</p>
+                              </div>
+                              <div class="col-sm-8">
+                                <p class="ticket-details-label">10/05/2023 9:04 PM</p>
+                              </div>                              
+                            </div>
+                            
+                            <div class="row mt-2">
+                              <div class="col-sm-4">
+                                <p class="ticket-details-label font-weight-bold">Last Ticket Update:</p>
+                              </div>
+                              <div class="col-sm-8">
+                                <p class="ticket-details-label">10/10/2023 11:30 PM</p>
+                              </div>                              
+                            </div>
+                          </div>
+
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <p class="ticket-details-label font-weight-bold">Status:</p>
+                              </div>
+                              <div class="col-sm-8">
+                                <span class="badge badge-blue p-2">In Progress</span>
+                              </div>
+                            </div>  
+
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <p class="ticket-details-label font-weight-bold">Priority:</p>
+                              </div>
+                              <div class="col-sm-8">
+                                <span class="badge badge-yellow p-2">Medium</span>
+                              </div>
+                            </div>                                     
+                          </div>
+
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <p class="ticket-details-label font-weight-bold">Urgency:</p>
+                              </div>
+                              <div class="col-sm-7">
+                                <select id="sample3" class="js-states form-control">
+                                  <option>Select Urgency...</option>                       
+                                  <option>Critical</option>                       
+                                  <option>High</option>                       
+                                  <option>Medium</option>                       
+                                  <option>Low</option>                       
+                                </select>
+                              </div>
+                            </div>   
+
+                            <div class="row mt-2">
+                              <div class="col-sm-4">
+                                <p class="ticket-details-label font-weight-bold">Department:</p>
+                              </div>
+                              <div class="col-sm-8">
+                                <p class="ticket-details-label">Business Intelligence</p>
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <p class="ticket-details-label font-weight-bold">Assignee:</p>
+                              </div>
+                              <div class="col-sm-7">
+                                <select class="js-example-basic-multiple" name="assignees[]" multiple="multiple">
+                                  <option value="">Kristian Casio</option>                                
+                                  <option value="">Joshaem Recarro</option>                                
+                                  <option value="">Rodney Aguinaldo</option>                                
+                                  <option value="">Lawrence Auguis</option>
+                                  <option value="">Marvin John Daton</option>
+                                  <option value="">Philip Dumaua</option>
+                                </select> 
+                              </div>                                
+                            </div>
+
+                            <div class="row mt-2">
+                              <div class="col-sm-12 text-center">
+                                <button class="btn w-25 btn-primary">Submit</button>
+                              </div>                          
+                            </div>
+                          </div> 
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="card shadow border mt-3">
+                      <div class="card-body p-3">
+                        <div class="row p-2">
+                          <div class="col-sm-12">
+                            <h4 class="text-blue pt-2 font-weight-bold">Description</h4>
+                            <hr>
+                            <div class="card description">
+                              <div class="card-body py-3">
+              
+                                <p class=" mb-1">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <div class="col-sm-8">
+                    <div class="card shadow border mt-3">
+                      <div class="card-body p-3">
+                        <div class="row p-2">
+                          <div class="col-sm-12">
+                            <h4 class="text-blue pt-2 font-weight-bold">Activity</h4>
+                            <hr>
+              
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                              <li class="nav-item" role="presentation">
+                                <button class="nav-link disabled" id="pills-show-tab" data-toggle="pill" data-target="#pills-show" type="button" role="tab" aria-controls="pills-show" disabled>Show:</button>
+                              </li>
+                              <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-all-tab" data-toggle="pill" data-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true">All</button>
+                              </li>
+                              <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-comments-tab" data-toggle="pill" data-target="#pills-comments" type="button" role="tab" aria-controls="pills-comments" aria-selected="false">Comments</button>
+                              </li>
+                              <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-history-tab" data-toggle="pill" data-target="#pills-history" type="button" role="tab" aria-controls="pills-history" aria-selected="false">History</button>
+                              </li>
+                            </ul>
+              
+                            <div class="tab-content" id="pills-tabContent">
+              
+                              <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+                                <!--all tab-->
+                                <div class="alert alert-comment" role="alert">
+                                  <span class="alert-link">Mary Smith</span> added a <span class="alert-link">Comment.</span>
+                                  <span class="text-muted ml-2">2 minutes ago</span>  
+                                  <span class="badge badge-comment ml-2 p-2">Comment</span>
+                                  <p class="mb-0">Test comment</p>
+                                </div>                           
+                                <div class="alert alert-activity" role="alert">                             
+                                  <span class="alert-link">Mary Smith</span> created the <span class="alert-link">ticket.</span> 
+                                  <span class="text-muted ml-2">1 hour ago</span> 
+                                  <span class="badge badge-history ml-2 p-2">History</span>
+                                </div>
+                              </div>
+              
+                              <!--comment tab-->
+                              <div class="tab-pane fade" id="pills-comments" role="tabpanel" aria-labelledby="pills-comments-tab">
+                                <div class="alert alert-comment" role="alert">
+                                  <span class="alert-link">Mary Smith</span> added a <span class="alert-link">Comment.</span>
+                                  <span class="text-muted ml-2">2 minutes ago</span> 
+                                  <p class="mb-0">Test comment</p>
+                                </div> 
+                              </div>
+              
+                              <!--history tab-->
+                              <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
+                                <div class="alert alert-activity" role="alert">                             
+                                  <span class="alert-link">Mary Smith</span> created the <span class="alert-link">ticket.</span> 
+                                  <span class="text-muted ml-2">1 hour ago</span> 
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div class="card shadow border mt-3">
+                      <div class="card-body p-3">
+                        <div class="row p-2">
+                          <div class="col-sm-12">
+                            <h4 class="text-blue pt-2 font-weight-bold">Attachments</h4>
+                            <hr>
+
+                            <div class="alert alert-primary" role="alert" data-toggle="tooltip" data-placement="left" title="Click to Download">
+                              • <span class="alert-link">image_001.jpg</span>.                        
+                             </div>
+                             <div class="alert alert-primary" role="alert" data-toggle="tooltip" data-placement="left" title="Click to Download">
+                               • <span class="alert-link">image_002.jpg</span>.
+                             </div>
+                             <div class="alert alert-primary" role="alert" data-toggle="tooltip" data-placement="left" title="Click to Download">
+                               • <span class="alert-link">Duplicate Data.docx</span>.
+                             </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+<script src="vendors/bootstrap-core/jquery-3.5.1.js"></script>
+<script src="vendors/bootstrap-core/popper.min.js"></script>
+<script src="vendors/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="vendors/datatable/js/jquery.dataTables.min.js"></script>
+<script src="vendors/datatable/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
+  $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+  });
+
+  window.onload = function(){
+    const sidebar = document.querySelector(".sidebar");
+    const closeBtn = document.querySelector("#btn");
+    closeBtn.addEventListener("click",function(){
+        sidebar.classList.toggle("open")
+        menuBtnChange()
+    })
+    searchBtn.addEventListener("click",function(){
+        sidebar.classList.toggle("open")
+        menuBtnChange()
+    })
+    function menuBtnChange(){
+        if(sidebar.classList.contains("open")){
+            closeBtn.classList.replace("fa-bars","fa-times")
+        }else{
+            closeBtn.classList.replace("fa-times","fa-bars")
+        }
+    }
+  }
+
+   $("#sample1").select2({
+       placeholder: "Select...",
+       allowClear: true
+   });
+   $("#sample2").select2({
+       placeholder: "Select...",
+       allowClear: true
+   });
+   $("#sample3").select2({
+       placeholder: "Select...",
+       allowClear: true
+   });
+   $("#sample4").select2({
+       placeholder: "Select...",
+       allowClear: true
+   });
+   
+  $(document).ready(function() {
+       $('#my_tickets_tbl').DataTable();
+  });
+
+  $(document).ready(function() {
+       $('#my_orgtickets_tbl').DataTable();
+  });
+</script>

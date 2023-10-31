@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Open Tickets</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="icon" type="image/png" href="assets/tp.ico">  
+  <!--bootstrap-->
+  <link rel="stylesheet" href="vendors/bootstrap-4.6.0/css/bootstrap.min.css">
+  <!--fontawesome-->
+  <link rel="stylesheet" href="vendors/fontawesome-5.13.0/css/all.css">
+  <!--datatable-->
+  <link rel="stylesheet"  href="vendors/datatable/css/dataTables.bootstrap4.min.css">
+  
+  <!--custom CSS-->
+  <link rel="stylesheet" href="vendors/css/custom.css">
+  <!-- select2 css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css">
+</head>
+<body class="bg-gray-100"> 
+  <div class="wrapper">
+    <!--side bars-->
+    <div class="sidebar">
+      <div class="logo_details">
+        <i class="icon"></i>
+        <div class="logo_name text-center">BARC</div>
+        <i class="fas fa-bars" id="btn"></i>
+      </div>
+      <div class="logo_header text-center">Ticketing System</div>     
+      <hr>
+
+      <ul class="nav-list">           
+        <li class="">
+          <a href="dashboard.html">
+            <i class="fas fa-th-large"></i>
+            <span class="link_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+
+        <li>
+          <a href="submit-ticket.html">
+            <i class="fas fa-paper-plane"></i>
+            <span class="link_name">Submit a Ticket</span>
+          </a>
+          <span class="tooltip">Submit a Ticket</span>
+        </li>
+
+        <li>
+          <a href="my-tickets.html">
+            <i class="fas fa-ticket-alt"></i>
+            <span class="link_name">My Tickets</span>
+          </a>
+          <span class="tooltip">My Tickets</span>
+        </li>
+
+        <li>
+          <a href="#pageSubmenu"  class="main-menu dropdown-toggle active" data-toggle="collapse" aria-expanded="false">
+            <i class="fas fa-ticket-alt"></i>
+            <span class="link_name">All Tickets</span>
+            
+          </a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+            <li>
+                <a href="open-tickets.html">
+                  <i class="fas fa-ticket-alt"></i>
+                  <span class="link_name">Open Tickets</span>
+                </a>
+            </li>
+            <li>
+              <a href="pending-tickets.html">
+                <i class="fas fa-exclamation-circle"></i>
+                <span class="link_name">Pending Tickets</span>
+              </a>
+            </li>                
+          </ul>
+          <span class="tooltip">All Tickets</span>
+        </li>
+        
+      </ul>
+    </div>
+
+    <!--content-->
+    <section class="home-section">
+      <!-- top nav -->     
+      <nav class="navbar navbar-expand-lg bg-white sticky-top shadow p-2" id="navbar">
+          <div class="container-fluid">
+      
+              <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm">Pages</li>
+                        <li class="breadcrumb-item text-sm" aria-current="page">All Tickets</li>
+                    </ol>
+                    <h4 class="font-weight-bolder mb-0">Open Tickets</h4>
+              </nav>
+
+              <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">                                
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-fw fa-bell"></i> 
+                                <span class="indicator"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img">
+                                                        <i class="fas fa-user-circle fa-3x user-avatar-md rounded-circle mt-2"></i>
+                                                        <!-- <img src="https://img.icons8.com/office/100/000000/administrator-female.png" alt="" class="user-avatar-md rounded-circle"> -->
+                                                    </div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Hukonah</span>replied to ticket ABC-001-123.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img">
+                                                        <i class="fas fa-user-circle fa-3x user-avatar-md rounded-circle mt-2"></i>
+                                                    </div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">John Sammy</span>assigned ticket EFG-123-002 to you.
+                                                        <div class="notification-date">2 days ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                                                       
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                <!-- <img src="https://img.icons8.com/dusk/100/000000/user-female-circle.png" alt="" class="user-avatar-md rounded-circle"></a> -->
+                                <i class="fas fa-user-circle user-avatar-md rounded-circle fa-lg"></i>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown user-drpdwn" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">John Doe</h5>                                            
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+              </div>
+          </div>
+      </nav>
+     
+
+      <div class="px-4">        
+        <div class="row mt-4">
+          <div class="col-sm-12">
+            <div class="card border shadow all-tickets">
+              <div class="card-body p-4">                
+                <fieldset>
+                  <legend>Search By:</legend>
+                  <div class="mb-4 d-flex justify-content-start align-items-end">                  
+                    <div class="justify-content-start pr-4">
+                      <label for="date" class="font-weight-bold">Request Date:</label>
+                      <div class="inp-group date" id="datepicker">                                                                  
+                          <div class="input-group">
+                            <input type="text" class="form-control" id="date">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i class="fas fa-calendar-alt"></i>
+                              </div>
+                            </div>                        
+                          </div>
+                      </div> 
+                    </div>                  
+                    <div class="inp-group pr-4">
+                      <label for="statusLabel" class="font-weight-bold">Assignee:</label> 
+                      <select id="sample1" class="js-states form-control">
+                        <option>Select Assignee...</option>
+                        <option>Solved</option>
+                        <option>In Progress</option>
+                        <option>Unassigned</option>
+                        <option>Answered</option>
+                      </select> 
+                    </div>
+                    <div class="inp-group pr-4">
+                      <label for="statusLabel" class="font-weight-bold">Status:</label> 
+                      <select id="sample1" class="js-states form-control">
+                        <option>Select Status...</option>
+                        <option>Solved</option>
+                        <option>In Progress</option>
+                        <option>Unassigned</option>
+                        <option>Answered</option>
+                      </select> 
+                    </div>                  
+                    <div class="inp-group pr-4">
+                      <label for="statusLabel" class="font-weight-bold">Priority:</label> 
+                      <select id="sample2" class="js-states form-control">
+                        <option>Select Priority...</option>
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                      </select>
+                    </div> 
+      
+                    <button class="btn btn-primary px-3 py-2 bg-gradient-blue">
+                      <i class="fas fa-search"></i>
+                    </button> 
+                  </div>
+                </fieldset>
+                <table id="open_tickets_tbl" class="table table-borderless" style="width:100%">
+                    <thead class="text-blue">
+                      <tr>
+                          <th>Tracking ID</th>
+                          <th>Request Date</th>
+                          <th>Requestor</th>
+                          <th>Subject</th>
+                          <th>Assignee</th>
+                          <th>Status</th>
+                          <th>Priority</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                          <td><a href="" class="text-blue">ABC-123-000</a></td>
+                          <td>9/14/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-yellow p-2">Medium</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">DEF-456-002</a></td>
+                          <td>9/15/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-green p-2">Low</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">GHI-789-003</a></td>
+                          <td>9/10/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-red p-2">High</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">JKL-012-004</a></td>
+                          <td>7/5/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-red p-2">High</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">MNO-345-005</a></td>
+                          <td>9/1/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-green p-2">Low</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">G6C-PCQ-GFT9</a></td>
+                          <td>7/29/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-green p-2">Low</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">CBK-HWM-YHHZ</a></td>
+                          <td>6/15/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-yellow p-2">Medium</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">RPT-GBD-D0SJ</a></td>
+                          <td>5/1/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-yellow p-2">Medium</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">289-EV4-QZBR</a></td>
+                          <td>7/20/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-red p-2">High</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">QYP-Q5Y-5TTS</a></td>
+                          <td>6/20/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-green p-2">Low</span></td>
+                      </tr>
+                      <tr>
+                          <td><a href="" class="text-blue">YT2-FKC-35FP</a></td>
+                          <td>6/6/2023</td>
+                          <td>John Doe</td>
+                          <td>Lorem ipsum dolor sit amet</td>
+                          <td><i>Unassigned</i></td>
+                          <td><span class="badge badge-cyan p-2">New</span></td>
+                          <td><span class="badge badge-red p-2">High</span></td>
+                      </tr>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+  </div>
+
+</body>
+<script src="vendors/bootstrap-core/jquery-3.5.1.js"></script>
+<script src="vendors/bootstrap-core/popper.min.js"></script>
+<script src="vendors/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="vendors/datatable/js/jquery.dataTables.min.js"></script>
+<script src="vendors/datatable/js/dataTables.bootstrap4.min.js"></script>
+<script src="vendors/bootstrap-datepicker.min.js"></script>
+
+<!-- select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<script>
+  window.onload = function(){
+    const sidebar = document.querySelector(".sidebar");
+    const closeBtn = document.querySelector("#btn");
+    closeBtn.addEventListener("click",function(){
+        sidebar.classList.toggle("open")
+        menuBtnChange()
+    })
+    searchBtn.addEventListener("click",function(){
+        sidebar.classList.toggle("open")
+        menuBtnChange()
+    })
+    function menuBtnChange(){
+        if(sidebar.classList.contains("open")){
+            closeBtn.classList.replace("fa-bars","fa-times")
+        }else{
+            closeBtn.classList.replace("fa-times","fa-bars")
+        }
+    }
+  }
+
+  $(document).ready(function() {
+    $('#open_tickets_tbl').DataTable({
+      searching: false,
+      "rowCallback": function(row, data, index){
+        var firstCol = $('td:eq(0)', row);
+        firstCol.css('text-decoration','underline','font-weight','bold')
+      }
+    });
+    $('#datepicker').datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight:'TRUE',
+      autoclose: true,
+    });
+  });
+</script>
